@@ -1,0 +1,14 @@
+<h2>Déclarer une collecte</h2>
+
+<form (ngSubmit)="addCollecte()">
+  <input type="date" [(ngModel)]="newCollecte.date" name="date" required />
+  <input type="text" [(ngModel)]="newCollecte.association" name="association" placeholder="Association" required />
+  <button type="submit">Ajouter</button>
+</form>
+
+<h3>Liste des collectes</h3>
+<ul>
+  <li *ngFor="let c of collectes">
+    {{ c.date }} - {{ c.association }}
+  </li>
+</ul>
