@@ -1,8 +1,9 @@
-<div class="collectes-layout">
+<div class="layout">
 
-  <ul class="collectes-list">
-    <li
+  <ul class="list">
+    <li class="list-item-selectionnable"
       *ngFor="let c of collectes"
+      [class.active]="c === selectedCollecte"
       (click)="selectCollecte(c)">
       {{ c.date }} – {{ c.association }}
     </li>

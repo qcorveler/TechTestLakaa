@@ -1,26 +1,72 @@
-<h3>Indicateurs</h3>
+<div class="card">
+  <h4 class="card-title">Ajouter un indicateur</h4>
 
-<ul>
-  <li *ngFor="let ind of indicateurs">
-    {{ ind.name }} ({{ ind.type }}) {{ ind.unit }}
-    <button (click)="deleteIndicator(ind.id)">Supprimer</button>
-  </li>
-</ul>
+  <div class="form-grid">
+    <div class="form-field">
+      <label>Nom</label>
+      <input
+        type="text"
+        [(ngModel)]="newIndicator.name"
+        placeholder="Ex : Nombre de bénéficiaires"
+      />
+    </div>
 
-<h4>Ajouter un indicateur</h4>
+    <div class="form-field">
+      <label>Unité</label>
+      <input
+        type="text"
+        [(ngModel)]="newIndicator.unit"
+        placeholder="Ex : personnes, €, %"
+      />
+    </div>
 
-<input [(ngModel)]="newIndicator.name" placeholder="Nom" />
-<input [(ngModel)]="newIndicator.unit" placeholder="Unité" />
+    <div class="form-field">
+      <label>Type</label>
+      <select [(ngModel)]="newIndicator.type">
+        <option value="NUMBER">Nombre</option>
+        <option value="TEXT">Texte</option>
+        <option value="BOOLEAN">Booléen</option>
+      </select>
+    </div>
 
-<select [(ngModel)]="newIndicator.type">
-  <option value="NUMBER">Nombre</option>
-  <option value="TEXT">Texte</option>
-  <option value="BOOLEAN">Booléen</option>
-</select>
+    <div class="form-field checkbox">
+      <label>
+        <input type="checkbox" [(ngModel)]="newIndicator.required" />
+        Indicateur obligatoire
+      </label>
+    </div>
+  </div>
 
-<label>
-  <input type="checkbox" [(ngModel)]="newIndicator.required" />
-  Obligatoire
-</label>
+  <div class="actions">
+    <button class="primary" (click)="addIndicator()">
+      ➕   Ajouter l’indicateur
+    </button>
+  </div>
+</div>
 
-<button (click)="addIndicator()">Ajouter</button>
+
+<h3>Indicateurs existants</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Type</th>
+      <th>Unité</th>
+      <th class="actions">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let ind of indicateurs">
+      <td>{{ ind.name }}</td>
+      <td>{{ ind.type }}</td>
+      <td>{{ ind.unit || '—' }}</td>
+      <td class="actions">
+        <button class="danger" (click)="deleteIndicator(ind.id)">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

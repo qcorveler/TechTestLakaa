@@ -12,7 +12,7 @@
     font-weight: 500;
 
     &.active {
-      background: #1976d2;
+      background: var(--primary-dark);
       color: white;
     }
   }

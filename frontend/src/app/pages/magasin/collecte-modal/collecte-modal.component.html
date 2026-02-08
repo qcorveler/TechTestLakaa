@@ -4,38 +4,51 @@
   <h2>Nouvelle collecte</h2>
 
   <form [formGroup]="form">
+    <ul class="list" >
+      <li class="list-item">
+        <label>Date</label>
+        <input type="date" formControlName="date" />
+        <label class="required">* </label>
+      </li>
 
-    <label>Date</label>
-    <input type="date" formControlName="date" />
-
-    <label>Association</label>
-    <input type="text" formControlName="association" />
-    
+      <li class="list-item">
+        <label>Association</label>
+        <input type="text" formControlName="association" />
+        <label class="required">* </label>
+      </li>
+      
     <div *ngFor="let ind of indicateurs">
-      <label>{{ ind.name }}</label>
+      
+      <li class="list-item">
+        <label>{{ ind.name }}</label>
 
-      <input
-        *ngIf="ind.type === 'NUMBER'"
-        type="number"
-        [formControlName]="'ind_' + ind.id"
-      />
 
-      <input
-        *ngIf="ind.type === 'TEXT'"
-        type="text"
-        [formControlName]="'ind_' + ind.id"
-      />
+        <input
+          *ngIf="ind.type === 'NUMBER'"
+          type="number"
+          [formControlName]="'ind_' + ind.id"
+        />
 
-      <input
-        *ngIf="ind.type === 'BOOLEAN'"
-        type="checkbox"
-        [formControlName]="'ind_' + ind.id"
-      />
+        <input
+          *ngIf="ind.type === 'TEXT'"
+          type="text"
+          [formControlName]="'ind_' + ind.id"
+        />
+
+        <input
+          *ngIf="ind.type === 'BOOLEAN'"
+          type="checkbox"
+          [formControlName]="'ind_' + ind.id"
+        />
+
+        <label *ngIf="ind.required" class="required">* </label>
+      </li>
     </div>
+    </ul>
   </form>
 
   <div class="actions">
-    <button (click)="close.emit()">Annuler</button>
+    <button class="btn-danger" (click)="close.emit()">Annuler</button>
     <button (click)="submit()">Soumettre</button>
   </div>
 </div>

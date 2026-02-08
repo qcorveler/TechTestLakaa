@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use './styles/buttons';
+@use './styles/cards';
+@use './styles/layout';
+@use './styles/lists';
+
+/* Couleurs */
+:root {
+  --primary: #CCECED;     
+  --primary-dark: #013607;
+  --secondary: #64748b;   // gris
+  --bg: #ffffff;
+  --border: #e5e7eb;
+  --danger: #dc2626;
+}
+
+/* Typo */
+body {
+  font-family: Inter, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  color: #111827;
+}
+

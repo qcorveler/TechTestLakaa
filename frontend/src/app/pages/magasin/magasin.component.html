@@ -1,6 +1,6 @@
 <h2>Bienvenue, Responsable magasin</h2>
 
-<button (click)="openModal()">➕ Ajouter une collecte</button>
+<button class="btn" (click)="openModal()">➕   Ajouter une collecte</button>
 
 <app-collecte-modal
   *ngIf="showModal"
@@ -9,8 +9,8 @@
   (submitCollecte)="submitCollecte($event)">
 </app-collecte-modal>
 
-<ul class="collectes-list">
-  <li
+<ul class="list">
+  <li class="list-item"
     *ngFor="let c of collectes">
     {{ c.date }} – {{ c.association }}
   </li>
