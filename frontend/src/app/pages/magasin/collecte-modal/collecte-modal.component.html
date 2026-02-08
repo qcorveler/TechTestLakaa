@@ -1,0 +1,41 @@
+<div class="backdrop" (click)="close.emit()"></div>
+
+<div class="modal">
+  <h2>Nouvelle collecte</h2>
+
+  <form [formGroup]="form">
+
+    <label>Date</label>
+    <input type="date" formControlName="date" />
+
+    <label>Association</label>
+    <input type="text" formControlName="association" />
+    
+    <div *ngFor="let ind of indicateurs">
+      <label>{{ ind.name }}</label>
+
+      <input
+        *ngIf="ind.type === 'NUMBER'"
+        type="number"
+        [formControlName]="'ind_' + ind.id"
+      />
+
+      <input
+        *ngIf="ind.type === 'TEXT'"
+        type="text"
+        [formControlName]="'ind_' + ind.id"
+      />
+
+      <input
+        *ngIf="ind.type === 'BOOLEAN'"
+        type="checkbox"
+        [formControlName]="'ind_' + ind.id"
+      />
+    </div>
+  </form>
+
+  <div class="actions">
+    <button (click)="close.emit()">Annuler</button>
+    <button (click)="submit()">Soumettre</button>
+  </div>
+</div>

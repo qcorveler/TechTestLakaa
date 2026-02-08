@@ -1,0 +1,24 @@
+<div class="collectes-layout">
+
+  <ul class="collectes-list">
+    <li
+      *ngFor="let c of collectes"
+      (click)="selectCollecte(c)">
+      {{ c.date }} – {{ c.association }}
+    </li>
+  </ul>
+
+  <div class="collecte-details" *ngIf="selectedCollecte">
+    <h3>Détails</h3>
+
+    <p><strong>Date:</strong> {{ selectedCollecte.date }}</p>
+    <p><strong>Association:</strong> {{ selectedCollecte.association }}</p>
+
+    <ul>
+      <li *ngFor="let v of selectedCollecte.valeurs">
+        {{ v.name }} : {{ v.valeur }} {{ v.unit }}
+      </li>
+    </ul>
+  </div>
+
+</div>

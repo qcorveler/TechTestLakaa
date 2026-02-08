@@ -1,14 +1,17 @@
-<h2>Déclarer une collecte</h2>
+<h2>Bienvenue, Responsable magasin</h2>
 
-<form (ngSubmit)="addCollecte()">
-  <input type="date" [(ngModel)]="newCollecte.date" name="date" required />
-  <input type="text" [(ngModel)]="newCollecte.association" name="association" placeholder="Association" required />
-  <button type="submit">Ajouter</button>
-</form>
+<button (click)="openModal()">➕ Ajouter une collecte</button>
 
-<h3>Liste des collectes</h3>
-<ul>
-  <li *ngFor="let c of collectes">
-    {{ c.date }} - {{ c.association }}
+<app-collecte-modal
+  *ngIf="showModal"
+  [indicateurs]="indicateurs"
+  (close)="closeModal()"
+  (submitCollecte)="submitCollecte($event)">
+</app-collecte-modal>
+
+<ul class="collectes-list">
+  <li
+    *ngFor="let c of collectes">
+    {{ c.date }} – {{ c.association }}
   </li>
 </ul>

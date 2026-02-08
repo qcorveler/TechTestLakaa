@@ -27,4 +27,8 @@ public class IndicatorController {
         return indicatorService.getAllIndicators();
     }
 
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        indicatorService.deleteIndicator(id);
+    }
 }

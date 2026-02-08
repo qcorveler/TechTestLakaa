@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Indicator } from '../models/indicator.model';
+import { BaseIndicator } from '../models/base-indicator.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class IndicatorService {
 
   getAllIndicators(): Observable<Indicator[]> {
     return this.http.get<Indicator[]>(this.apiUrl);
+  }
+
+  getAllBaseIndicators(): Observable<BaseIndicator[]> {
+    return this.http.get<BaseIndicator[]>(`${this.apiUrl}`);
   }
 
   createIndicator(indicator: Indicator): Observable<Indicator> {

@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div class="layout">
+  <aside class="sidebar">
+    <h2 class="logo">Adoba</h2>
+
+    <nav class="menu">
+      <a routerLink="/magasin" routerLinkActive="active">
+        🏪 Magasin
+      </a>
+      <a routerLink="/rse" routerLinkActive="active">
+        🌱 RSE
+      </a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

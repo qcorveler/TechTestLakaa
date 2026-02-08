@@ -21,4 +21,8 @@ public class IndicatorService {
     public List<Indicator> getAllIndicators() {
         return indicatorRepository.findAll();
     }
+
+    public void deleteIndicator(Long id) {
+        indicatorRepository.deleteById(id);
+    }
 }

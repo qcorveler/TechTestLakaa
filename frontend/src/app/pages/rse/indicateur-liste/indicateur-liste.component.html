@@ -1,0 +1,26 @@
+<h3>Indicateurs</h3>
+
+<ul>
+  <li *ngFor="let ind of indicateurs">
+    {{ ind.name }} ({{ ind.type }}) {{ ind.unit }}
+    <button (click)="deleteIndicator(ind.id)">Supprimer</button>
+  </li>
+</ul>
+
+<h4>Ajouter un indicateur</h4>
+
+<input [(ngModel)]="newIndicator.name" placeholder="Nom" />
+<input [(ngModel)]="newIndicator.unit" placeholder="Unité" />
+
+<select [(ngModel)]="newIndicator.type">
+  <option value="NUMBER">Nombre</option>
+  <option value="TEXT">Texte</option>
+  <option value="BOOLEAN">Booléen</option>
+</select>
+
+<label>
+  <input type="checkbox" [(ngModel)]="newIndicator.required" />
+  Obligatoire
+</label>
+
+<button (click)="addIndicator()">Ajouter</button>

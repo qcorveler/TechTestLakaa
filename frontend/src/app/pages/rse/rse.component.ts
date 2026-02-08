@@ -5,46 +5,60 @@ import { CollecteService } from '../../services/collecte.service';
 import { IndicatorService } from '../../services/indicator.service';
 import { Collecte } from '../../models/collecte.model';
 import { Indicator } from '../../models/indicator.model';
+import { CollecteListeComponent } from './collecte-liste/collecte-liste.component';
+import { IndicateurListeComponent } from './indicateur-liste/indicateur-liste.component';
+
+type RseView = 'COLLECTES' | 'INDICATEURS';
 
 @Component({
   selector: 'app-rse',
   standalone: true,
   templateUrl: './rse.component.html',
   styleUrl: './rse.component.scss',
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, CollecteListeComponent, IndicateurListeComponent]
 })
-export class RseComponent implements OnInit {
-  collectes: Collecte[] = [];
-  indicators: Indicator[] = [];
-  newIndicator: Indicator = { name: '', type: 'NUMBER' };
+export class RseComponent /*implements OnInit*/ {
+  activeView: RseView = 'COLLECTES';
 
-  constructor(
-    private collecteService: CollecteService,
-    private indicatorService: IndicatorService
-  ) {}
-
-  ngOnInit(): void {
-    this.loadCollectes();
-    this.loadIndicators();
+  showCollectes() {
+    this.activeView = 'COLLECTES';
   }
 
-  loadCollectes(): void {
-    this.collecteService.getAllCollectes().subscribe(data => this.collectes = data);
+  showIndicateurs() {
+    this.activeView = 'INDICATEURS';
   }
 
-  loadIndicators(): void {
-    this.indicatorService.getAllIndicators().subscribe(data => this.indicators = data);
-  }
+  // collectes: Collecte[] = [];
+  // indicators: Indicator[] = [];
+  // newIndicator: Indicator = { name: '', type: 'NUMBER', required : false };
 
-  addIndicator(): void {
-    this.indicatorService.createIndicator(this.newIndicator).subscribe(() => {
-      this.newIndicator = { name: '', type: 'NUMBER' };
-      this.loadIndicators();
-    });
-  }
+  // constructor(
+  //   private collecteService: CollecteService,
+  //   private indicatorService: IndicatorService
+  // ) {}
 
-  deleteIndicator(id: number): void {
-    this.indicatorService.deleteIndicator(id).subscribe(() => this.loadIndicators());
-  }
+  // ngOnInit(): void {
+  //   this.loadCollectes();
+  //   this.loadIndicators();
+  // }
+
+  // loadCollectes(): void {
+  //   this.collecteService.getAllCollectes().subscribe(data => this.collectes = data);
+  // }
+
+  // loadIndicators(): void {
+  //   this.indicatorService.getAllIndicators().subscribe(data => this.indicators = data);
+  // }
+
+  // addIndicator(): void {
+  //   this.indicatorService.createIndicator(this.newIndicator).subscribe(() => {
+  //     this.newIndicator = { name: '', type: 'NUMBER', required : false };
+  //     this.loadIndicators();
+  //   });
+  // }
+
+  // deleteIndicator(id: number): void {
+  //   this.indicatorService.deleteIndicator(id).subscribe(() => this.loadIndicators());
+  // }
 
 }

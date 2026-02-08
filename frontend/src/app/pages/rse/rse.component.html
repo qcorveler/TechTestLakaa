@@ -1,1 +1,27 @@
-<p>rse works!</p>
+<div class="rse-container">
+
+  <div class="tabs">
+    <button
+      (click)="showCollectes()"
+      [class.active]="activeView === 'COLLECTES'">
+      Collectes
+    </button>
+
+    <button
+      (click)="showIndicateurs()"
+      [class.active]="activeView === 'INDICATEURS'">
+      Indicateurs
+    </button>
+  </div>
+
+  <div class="content">
+    <app-collecte-liste
+      *ngIf="activeView === 'COLLECTES'">
+    </app-collecte-liste>
+
+    <app-indicateur-liste
+      *ngIf="activeView === 'INDICATEURS'">
+    </app-indicateur-liste>
+  </div>
+
+</div>

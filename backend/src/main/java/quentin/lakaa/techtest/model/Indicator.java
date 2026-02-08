@@ -17,4 +17,5 @@ public class Indicator {
     private String name;
     private String unit;
     private String type;
+    private boolean required;
 }
