@@ -15,8 +15,8 @@
     <p><strong>Association:</strong> {{ selectedCollecte.association }}</p>
 
     <ul>
-      <li *ngFor="let v of selectedCollecte.valeurs">
-        {{ v.name }} : {{ v.valeur }} {{ v.unit }}
+      <li *ngFor="let v of selectedCollecte.indicatorValuesDTO">
+        {{ v.indicatorName }} : {{ v.value }} {{ v.indicatorUnit }}
       </li>
     </ul>
   </div>

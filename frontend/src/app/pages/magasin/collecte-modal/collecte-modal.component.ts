@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BaseIndicator } from '../../../models/base-indicator.model';
 
 @Component({
@@ -22,26 +22,38 @@ export class CollecteModalComponent {
 
   ngOnInit() {
     const controls: any = {
-      date: [''],
-      association: ['']
+      date: ['', Validators.required],
+      association: ['', Validators.required]
     };
 
     this.indicateurs.forEach(ind => {
-      controls['ind_' + ind.id] = [''];
+      if (ind.type === 'BOOLEAN') {
+        controls['ind_' + ind.id] = [false, ind.required ? Validators.required : []];
+      } else {
+        controls['ind_' + ind.id] = ['', ind.required ? Validators.required : []];
+      }
     });
 
     this.form = this.fb.group(controls);
   }
 
   submit() {
+    if (this.form.invalid) {
+    this.form.markAllAsTouched();
+    alert('Veuillez remplir les champs obligatoires');
+    return; // Empêche la soumission
+    }
+
     const payload = {
     date: this.form.value.date,
     association: this.form.value.association,
-    valeurs: this.indicateurs.map(ind => ({
-      indicateurId: ind.id,
-      valeur: this.form.value['ind_' + ind.id]
+    indicatorValues: this.indicateurs.map(ind => ({
+      indicatorId: ind.id,
+      value: this.form.value['ind_' + ind.id]
     }))
     }
+
+    console.log("Payload à soumettre", payload);
     this.submitCollecte.emit(payload);
   }
 }

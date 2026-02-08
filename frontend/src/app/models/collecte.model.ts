@@ -1,8 +1,8 @@
-import { IndicatorValue } from './indicator-value.model';
+import { IndicatorValueDTO } from './indicator-value-DTO.dto';
 
 export interface Collecte {
   id?: number;
   date: string; // ou Date
   association: string;
-  indicatorValues?: IndicatorValue[];
+  indicatorValuesDTO?: IndicatorValueDTO[];
 }

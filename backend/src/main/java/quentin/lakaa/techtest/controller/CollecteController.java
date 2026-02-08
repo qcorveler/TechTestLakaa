@@ -2,7 +2,9 @@ package quentin.lakaa.techtest.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import quentin.lakaa.techtest.DTO.CollecteDTO;
 import quentin.lakaa.techtest.model.Collecte;
+import quentin.lakaa.techtest.request.CreateCollecteRequest;
 import quentin.lakaa.techtest.service.CollecteService;
 
 import java.util.List;
@@ -19,12 +21,13 @@ public class CollecteController {
     }
 
     @PostMapping
-    public ResponseEntity<Collecte> createCollecte(@RequestBody Collecte collecte) {
+    public ResponseEntity<Collecte> createCollecte(@RequestBody CreateCollecteRequest collecte) {
         return ResponseEntity.ok(collecteService.createCollecte(collecte));
     }
 
     @GetMapping
-    public List<Collecte> getAllCollectes() {
+    public List<CollecteDTO> getAllCollectes() {
+        System.out.println("GET Collectes reçu");
         return collecteService.getAllCollectes();
     }
 }

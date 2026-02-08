@@ -36,6 +36,10 @@ export class IndicateurListeComponent implements OnInit {
   }
 
   addIndicator() {
+    if (!this.newIndicator.name) {
+      alert('Veuillez remplir les champs obligatoires');
+      return;
+    }
     this.indicatorService.createIndicator(this.newIndicator).subscribe(() => {
       this.newIndicator = { name: '', type: 'NUMBER', unit: '', required: false };
       this.loadIndicators();

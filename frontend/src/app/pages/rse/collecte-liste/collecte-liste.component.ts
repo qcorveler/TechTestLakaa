@@ -14,7 +14,7 @@ export class CollecteListeComponent {
 
   collectes: Collecte[] = [];
 
-  selectedCollecte: any | null = null;
+  selectedCollecte: Collecte | null = null;
 
   constructor(
     private collecteService: CollecteService
@@ -28,7 +28,9 @@ export class CollecteListeComponent {
     this.collecteService.getAllCollectes().subscribe(data => this.collectes = data);
   }
 
-  selectCollecte(c: any) {
+  selectCollecte(c: Collecte) {
     this.selectedCollecte = c;
+    console.log("Collecte sélectionnée", c);
+    console.log("Valeurs de la collecte", c.indicatorValuesDTO);
   }
 }
