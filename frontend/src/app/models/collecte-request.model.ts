@@ -2,7 +2,7 @@
 import { IndicatorValue } from "./indicator-value.model";
 
 export interface CreateCollecteRequest {
-  date: string; // ou Date si ton backend accepte ISO strings
+  date: string;
   association: string;
   indicatorValues: IndicatorValue[]; // tableau des indicateurs et leurs valeurs
 }

@@ -1,5 +1,6 @@
 <div class="layout">
 
+  <!-- Liste des collectes -->
   <ul class="list">
     <li class="list-item-selectionnable"
       *ngFor="let c of collectes"
@@ -9,6 +10,7 @@
     </li>
   </ul>
 
+  <!-- Affichage des collectes si une est sélectionnée -->
   <div class="collecte-details" *ngIf="selectedCollecte">
     <h3>Détails</h3>
 

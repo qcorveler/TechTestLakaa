@@ -2,6 +2,7 @@
 
 <button class="btn" (click)="openModal()">➕   Ajouter une collecte</button>
 
+<!-- Pop up de remplissage d'une collecte -->
 <app-collecte-modal
   *ngIf="showModal"
   [indicateurs]="indicateurs"
@@ -9,6 +10,7 @@
   (submitCollecte)="submitCollecte($event)">
 </app-collecte-modal>
 
+<!-- Liste des collectes -->
 <ul class="list">
   <li class="list-item"
     *ngFor="let c of collectes">

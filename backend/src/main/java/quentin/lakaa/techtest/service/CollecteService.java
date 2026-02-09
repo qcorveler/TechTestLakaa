@@ -30,6 +30,11 @@ public class CollecteService {
         this.indicatorValueRepository = indicatorValueRepository;
     }
 
+
+    /**
+     * Créer une collete revient à ajouter une ligne dans la table collecte et ajouter autant de lignes
+     * qu'il y a d'indicateur dans la table indicator_value
+     */
     public Collecte createCollecte(CreateCollecteRequest request) {
         Collecte collecte = new Collecte();
         collecte.setDate(request.getDate());
@@ -53,6 +58,11 @@ public class CollecteService {
         return collecte;
     }
 
+
+    /**
+     * Pour récupérer toutes les collectes, on doit récupérer dans la table collecte et dans la table indicator_value
+     * pour avoir les valeurs dynamiques associées à chaque collecte
+     * */
     public List<CollecteDTO> getAllCollectes() {
         List<CollecteDTO> res = null;
         res = collecteRepository.findAll().stream().map(collecte -> {

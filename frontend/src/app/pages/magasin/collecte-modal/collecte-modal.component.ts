@@ -41,7 +41,7 @@ export class CollecteModalComponent {
     if (this.form.invalid) {
     this.form.markAllAsTouched();
     alert('Veuillez remplir les champs obligatoires');
-    return; // Empêche la soumission
+    return; // Empêche la soumission quand il y a des champs non ou mal remplis
     }
 
     const payload = {

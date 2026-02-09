@@ -3,6 +3,9 @@ package quentin.lakaa.techtest.DTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * IndicatorValueDTO sert à transférer les données des indicateurs d'une collecte particulière
+ * */
 @Data
 @NoArgsConstructor
 public class IndicatorValueDTO {
