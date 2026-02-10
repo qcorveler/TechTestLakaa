@@ -39,32 +39,11 @@ J'ai choisi une base Postgre que j'ai conteneurisée pour faciliter l'installati
 
 ### 1 : Démarrer la base de données
 
+Le projet se lance directement à partir de cette commande
 ```bash
-docker compose up -d
+docker compose up --build
 ```
 
-Vérifier que la base est lancée 
-
-```bash
-docker ps
-```
-
-### 2 : Lancer le backend
-
-```bash
-cd backend
-mvn clean install
-mvn spring-boot:run
-```
-
-
-### 3 : Lancer le frontend
-
-```bash
-cd frontend
-npm install
-ng serve
-```
 
 Application disponible sur :
 
