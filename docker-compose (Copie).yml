@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-techtest-lakaa
+    environment:
+      POSTGRES_DB: techtest_lakaa
+      POSTGRES_USER: adoba
+      POSTGRES_PASSWORD: adoba
+    ports:
+      - "5432:5432"
+    volumes:
+      - techtest_lakaa_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  techtest_lakaa_postgres_data:

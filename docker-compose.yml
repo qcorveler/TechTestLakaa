@@ -11,5 +11,25 @@ services:
     volumes:
       - techtest_lakaa_postgres_data:/var/lib/postgresql/data
 
+  backend:
+    build: ./backend
+    container_name: backend-techtest-lakaa
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/techtest_lakaa
+      SPRING_DATASOURCE_USERNAME: adoba
+      SPRING_DATASOURCE_PASSWORD: adoba
+
+  frontend:
+    build: ./frontend
+    container_name: frontend-techtest-lakaa
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
 volumes:
   techtest_lakaa_postgres_data:
