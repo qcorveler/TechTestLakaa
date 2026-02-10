@@ -103,3 +103,4 @@ La base de données est paramétrée comme suit :
 - Améliorer le design et UI
 - Ajouter authentification
 - Ajouter des tests unitaires
+- ...
